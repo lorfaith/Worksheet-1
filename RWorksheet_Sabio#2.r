@@ -3,7 +3,7 @@
 operatorVec <- c(-5:5)
 operatorVec
 #output: [1] -5 -4 -3 -2 -1  0  1  2  3  4  5
-#Decribe:
+#Decribe:the output arrange in ascending order.
 #b.x <- 1:7. What will be the value of x?
 x1<- 1:7
 x1
@@ -27,44 +27,44 @@ workers2<- age[4]
 paste(workers1,workers2)
 #value: 28,36
 #c. Access all but the 4th and 12th element is not included. Write the R script and its output.
-age <- removeList[c(4,12)]
-age
+RemoveList <- c(4, 12)
+NewAge <- age[-RemoveList]
+NewAge
 #output: [1] 34 28 22 27 18 52 39 42 29 35 27 22 37 34 19 20 57 49 50 37 46 25 17 37 43 53 [27] 41 51 35 24 33 41 53 40 18 44 38 41 48 27 39 19 30 61 54 58 26 18
 
 #4. *Create a vector x <- c("first"=3, "second"=0, "third"=9). Then named the vector, names(x).
-names(x) <- c("first"=3, "second"=0, "third"=9)
-names(x)
-#result:[1] "3" "0" "9" NA  NA  NA  NA 
+x <- c("first" = 3, "second" = 0, "third" = 9)
+print(x)
+#result:first second  third 
+#        3      0      9
 #a. Print the results. Then access x[c("first", "third")].Describe the output.
-x[c("first", "third")]
-#result:<NA> <NA> 
-          #NA   NA 
-#Describe:
+selectedE <- x[c("first", "third")]
+print(selectedE)
+#result:first third 
+#         3     9 
+#Describe:It selectively accesses and displays the elements "first" and "third" from the vector, showing their corresponding values
 
 #5. Create a sequence x from -3:2
 x2<- c(-3:2)
 x2
 #a. Modify 2nd element and change it to 0;
-x[2] <- 0
-x
+x2[2] <- 0
+x2
 #output:[1] -3  0 -1  0  1  2
-#Describe:
+#Describe: Instead of -2 in the second element it changed into 0.
 
 #6.Data of the diesel fuel purchased by Mr. Cruz.
 #a.Create a data frame for month, price per liter (php)and purchase-quantity (liter). Write the R scripts and its output.
-diesel_fuel <- data.frame( month = c("price per liter","purchase quantity"),
-   Jan   = c (52.50 , 25),
-   Feb   = c (57.25 , 30),
-   March = c (60.00 , 40),
-   April = c (65.00 , 50),
-   May   = c (74.25 , 10),
-   June  = c (54.00 , 45)
-)
-colnames <-diesel_fuel("month","Jan","Feb","March","April","May","June")
-View(diesel_fuel)
+diesel<- data.frame( Month = c("Jan","Feb","March","April","May","June"),
+                     liter <- c(52.50, 57.25, 60.00, 65.00, 74.25, 54),
+                     purchase<- c(25, 30, 40, 50, 10, 45))
+
+colnames(diesel)<- c("Month","Price per Liter(Php)", "Purchase quantity(Liters)")
+weighted.mean(liter,purchase)
+View(diesel)
 #Output: (write "view(diesel_fuel)" under the colnames)
 #b.What is the average fuel expenditure of Mr. Cruz from Jan to June? Note: Use 'weighted.mean(liter,purchase)'. Write the R scripts and its output.
-wt_mean <- weighted.mean(diesel_fuel$Jan, diesel_fuel$Feb, diesel_fuel$March, diesel_fuel$Apr, diesel_fuel$May, diesel_fuel$June)
+wt_mean <- weighted.mean(dieself$Jan, dieself$Feb, dieself$March, dieself$Apr, dieself$May, dieself$June)
 wt_mean
 #output: [1] 43.04441
 
@@ -88,7 +88,184 @@ data
 
 #8. The table below gives the 25 most powerful celebrities and their annual pay as ranked by the editions of Forbes magazine and as listed on the Forbes.com website.
 #a. Create vectors according to the above table. Write the R scripts and its output.
+#b. Modify the power ranking and pay of J.K. Rowling.Change power ranking to 15 and pay to 90. Write the R scripts and its output.
+#c. Create an excel file from the table above and save it as csv file(PowerRanking). Import the csv file into the RStudio. What is the R script?
+#d. Access the rows 10 to 20 and save it as Ranks.RData. Write the R script and its output.
+#e. Describe its output: 
+
+#9.a.Import the excel file into your RStudio. What is the R script?
+#b.How many dimensions does the dataset have? What is the R script? WHat is its output?
+#c.Select columns country, neighbourhood,price, stars, accomodation_type, and ratings. Write the R script.
+#d. Save the data as **new.RData to your RStudio. Write the R script.
+#e.Display the first six rows and last six rows of the new.RData. What is the R script?
 
 
+#10. Create a list of ten (10) vegetables you ate during your lifetime. If none, just list down.
+#a. Write the R scripts and its output.
+Vegetables <- list("carrots","potato","eggplant","potato", "broccoli", "tomato", "onion", "seaweed","cabbage","corn")
+Vegetables
+#output: 
+#[[1]]
+#[1] "carrots"
 
+#[[2]]
+#[1] "potato"
 
+#[[3]]
+#[1] "eggplant"
+
+#[[4]]
+#[1] "potato"
+
+#[[5]]
+#[1] "broccoli"
+
+#[[6]]
+#[1] "tomato"
+
+#[[7]]
+#[1] "onion"
+
+#[[8]]
+#[1] "seaweed"
+
+#[[9]]
+#[1] "cabbage"
+
+#[[10]]
+#[1] "corn"
+#b. Add 2 additional vegetables after the last vegetables in the list. What is the R script and its output?
+vegetablesList <- append(Vegetables,c("spinach","green beans"),after=10)
+vegetablesList
+#output: 
+#[[1]]
+#[1] "carrots"
+
+#[[2]]
+#[1] "potato"
+
+#[[3]]
+#[1] "eggplant"
+
+#[[4]]
+#[1] "potato"
+
+#[[5]]
+#[1] "broccoli"
+
+#[[6]]
+#[1] "tomato"
+
+#[[7]]
+#[1] "onion"
+
+#[[8]]
+#[1] "seaweed"
+
+#[[9]]
+#[1] "cabbage"
+
+#[[10]]
+#[1] "corn"
+
+#[[11]]
+#[1] "spinach"
+
+#[[12]]
+#[1] "green beans"
+
+#c. Add 4 additional vegetables after index 5. How many datapoints does your vegetable list have? What is the R script and its output?
+Veggies <- append(vegetablesList,c("Cauliflower","Sprouts","Kale","Sweet Potatos"),after=5)
+Veggies
+#output:
+#[[1]]
+#[1] "carrots"
+
+#[[2]]
+#[1] "potato"
+
+#[[3]]
+#[1] "eggplant"
+
+#[[4]]
+#[1] "potato"
+
+#[[5]]
+#[1] "broccoli"
+
+#[[6]]
+#[1] "Cauliflower"
+
+#[[7]]
+#[1] "Sprouts"
+
+#[[8]]
+#[1] "Kale"
+
+#[[9]]
+#[1] "Sweet Potatos"
+
+#[[10]]
+#[1] "tomato"
+
+#[[11]]
+#[1] "onion"
+
+#[[12]]
+#[1] "seaweed"
+
+#[[13]]
+#[1] "cabbage"
+
+#[[14]]
+#[1] "corn"
+
+#[[15]]
+#[1] "spinach"
+
+#[[16]]
+#[1] "green beans"
+#d.Remove the vegetables in index 5, 10, and 15. How many vegetables were left? Write the codes and its output.
+NewVeggies<- Veggies[c(-5,-10,-15)]
+NewVeggies
+#output:
+#[[1]]
+#[1] "carrots"
+
+#[[2]]
+#[1] "potato"
+
+#[[3]]
+#[1] "eggplant"
+
+#[[4]]
+#[1] "potato"
+
+#[[5]]
+#[1] "Cauliflower"
+
+#[[6]]
+#[1] "Sprouts"
+
+#[[7]]
+#[1] "Kale"
+
+#[[8]]
+#[1] "Sweet Potatos"
+
+#[[9]]
+#[1] "onion"
+
+#[[10]]
+#[1] "seaweed"
+
+#[[11]]
+#[1] "cabbage"
+
+#[[12]]
+#[1] "corn"
+
+#[[13]]
+#[1] "green beans"
+length(NewVeggies)
+#output: [1] 13
