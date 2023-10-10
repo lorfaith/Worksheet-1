@@ -71,8 +71,55 @@ lowestTemp
 ```
 ```{r 3a}
 # Using Matrix
-matrix(c(1:8,11:14), ncol=4, nrow=3)  
+FMat<-matrix(c(1:8,11:14), ncol=4, nrow=3)  
+FMat
 ```
 ```{r 3b}
-array(c(1:8,11:14), c(3,4,2))
+SMat <- (FMat * 2)
+SMat
+```
+```{r 3c}
+row2 <- SMat[2, ]
+row2
+```
+```{r 3d}
+colRow <- SMat[1:2,3:4]
+colRow
+```
+```{r 3e}
+colRow1 <- SMat[3,2:3]
+colRow1
+```
+```{r 3f}
+col4 <- SMat[ ,4]
+col4
+```
+```{r 3g}
+colnames(SMat) <- c("uno","dos","tres","quatro")
+rownames(SMat) <- c("isa","dalawa","tatlo")
+print(SMat)
+```
+```{r 3h}
+dim(FMat) <- c(6, 2)
+FMat
+```
+```{r 4}
+# Using Arrays
+mArray<- array(c(1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1))
+mArray
+```
+```{r 4a}
+repA <- rep(c(1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1), each = 2)
+repA
+```
+```{r 4a with dim}
+threeD <- array(repA, dim = c(2, 4, 3))
+threeD
+```
+```{r 4b}
+dim(threeD)
+```
+```{r 4c}
+dimnames(threeD) <- list(c("a", "b"), c("A", "B", "C", "D"), c("1st-Dimensional Array", "2nd-Dimensional Array", "3rd-Dimensional Array"))
+print(threeD)
 ```
