@@ -1,0 +1,147 @@
+---
+title: "RWorksheet_3b.Rmd"
+author: "Lore Faith Sabio"
+date: "2023-10-10"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(
+  comment = '', fig.width = 6, fig.height = 6
+)
+```
+
+```{r 1a}
+Respondents <- c(1:20)
+Sex <- c(2,2,1,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,1,2)
+FatherOccupation <- c(1,3,3,3,1,2,3,1,1,1,3,2,1,3,3,1,3,1,2,1)
+PersonsAtHome <- c(5,7,3,8,5,9,6,7,8,4,7,5,4,7,8,8,3,11,7,6)
+SiblingsAtSchool <- c(6,4,4,1,2,1,5,3,1,2,3,2,5,5,2,1,2,5,3,2)
+TypeOfHouses <- c (1,2,3,1,1,3,3,1,2,3,2,3,2,2,3,3,3,3,3,2)
+
+householdData <- data.frame(Respondents, Sex,FatherOccupation,PersonsAtHome,SiblingsAtSchool,TypeOfHouses)
+householdData
+```
+```{r 1b}
+#This data compose of 20 respondents with 7 males and 13 females. Also, the records of their fathers occupation(no.1 represents the farmer,no.2 as driver and no.3 others), number of persons at home,siblings at school and type of houses(no.1 represents the wood house,no.2 the semi-concrete and no.3 the conrete houses).
+summary(householdData)
+```
+```{r 1c}
+meanSiblings <- mean(householdData$SiblingsAtSchool)
+meanSiblings == 5
+```
+```{r 1d}
+subSet1 <- householdData[1:2, ]
+subSet1
+```
+```{r 1e}
+subSet2 <- householdData[c(3,5), c(2,4)]
+subSet2
+```
+```{r 1f}
+types_houses <- householdData$TypeOfHouses
+types_houses
+```
+```{r 1g}
+selected_data <- subset(householdData, Sex == 1 & FatherOccupation >= 1)
+selected_data
+```
+```{r 1h}
+selected_data1 <- subset(householdData, Sex == 2 & SiblingsAtSchool >= 5)
+selected_data1
+```
+```{r 2}
+df = data.frame(Ints=integer(),
+Doubles=double(), Characters=character(),
+Logicals=logical(),
+Factors=factor(),
+stringsAsFactors=FALSE)
+print("Structure of the empty dataframe:")
+print(str(df))
+```
+```{r 2a}
+#The result shows that the df is the data frame with  observation of 5 variables which are Ints,Doubles,Characters,Logicals,and factors with 0 levels
+```
+
+```{r 3a}
+respondents<-  c(1:10)
+sex <- c("Male","Female","Female","Male","Male","Female","Female","Male","Female","Male")
+Fathers_Occupation <- c(1,2,3,3,1,2,2,3,1,3)
+Persons_At_Home <- c(5,7,3,8,6,4,4,2,11,6)
+Siblings_At_School <- c(2,3,0,5,2,3,1,2,6,2)
+Type_Of_Houses <- c ("Wood","Congrete","Congrete","Wood","Semi-Congrete","Semi-Congrete","Wood","Semi-Congrete","Semi-Congrete","Congrete")
+  
+HouseholdData <- data.frame(respondents,sex,Fathers_Occupation,Persons_At_Home,Siblings_At_School,Type_Of_Houses)
+
+ 
+csv_file <- "HouseholdData.csv"
+write.csv(HouseholdData, file = csv_file)
+HouseholdData <- read.csv("HouseholdData.csv")
+ 
+```
+
+```{r 3b}
+HouseholdData$sex <- factor(HouseholdData$sex)
+HouseholdData$sex <- as.integer(factor(HouseholdData$sex,
+levels = c("Male", "Female"),
+labels = c(1, 2)))
+HouseholdData
+```
+```{r 3c}
+HouseholdData$Type_Of_Houses <- factor(HouseholdData$Type_Of_Houses)
+HouseholdData$Type_Of_Houses <- as.integer(factor(HouseholdData$Type_Of_Houses,
+levels = c("Wood", "Congrete", "Semi-Congrete"),
+labels = c(1, 2, 3)))
+print(HouseholdData)
+```
+```{r 3d}
+HouseholdData$Fathers_Occupation <- factor(HouseholdData$Fathers_Occupation)
+HouseholdData$Fathers_Occupation <- as.character(factor(HouseholdData$Fathers_Occupation,
+levels = c(1, 2, 3),
+labels = c("Farmer", "Driver", "Others")))
+print(HouseholdData)
+```
+```{r 3e}
+selected_data2 <- subset(HouseholdData, sex == 2 & Fathers_Occupation == "Driver")
+selected_data2
+```
+```{r 3f}
+selected_data3 <- subset(HouseholdData, sex == 2 & Siblings_At_School >= 5)
+selected_data3
+```
+```{r 4 Interpret the Graph, echo=TRUE}
+#The bar graph titled "Sentiment of Tweets per Day." This graph appears to represent sentiment analysis 
+#over a specific time frame, which is Twitter data from the year 2020. The sentiment analysis 
+#categorizes tweets into three sentiment groups: Negative, Neutral, and Positive.
+
+#The analysis of the graph focuses on several specific dates in July 2020. On July 14, 2020, 
+#the graph shows that there were nearly 2,500 tweets categorized as negative sentiment, 
+#around 1,500 tweets categorized as neutral, 
+#and approximately 1,750 tweets categorized as positive.
+
+#Moving on to July 15, 2020, the negative sentiment category saw a significant increase with over 4,000 
+#tweets categorized as negative. The neutral sentiment category 
+#had about 2,750 tweets, and the positive sentiment category had almost 3,200 tweets.
+
+#On July 17, 2020, the negative sentiment count was approximately 3,250 tweets, while the neutral sentiment 
+#category had about 1,800 tweets, and the positive sentiment category had almost 2,500 tweets.
+
+#The analysis continues with July 18, 2020, where the negative sentiment count remained at around 3,250 
+#tweets. The neutral sentiment category had about 2,000 tweets, and the
+#positive sentiment category had approximately 2,500 tweets.
+
+#Moving to July 20, 2020, the negative sentiment count was nearly 2,500 tweets. The neutral sentiment 
+#category had around 1,500 tweets, and almost 1,750 tweets were categorized as positive.
+
+#Finally, on July 21, 2020, the negative sentiment count was around 4,000 tweets, while the neutral sentiment 
+#category had about 2,600 tweets, and more than 3,000 tweets were categorized as positive.
+
+#In conclusion, the analysis highlights the variations in sentiment categories over these specific 
+#dates in July 2020. Notably, July 15 had the highest count of negative sentiment tweets, while July 20
+#had the lowest count, both in the negative and neutral categories. In contrast, July 21 had the 
+#highest count in the positive #sentiment category, and July 20 had the 
+#lowest count. Overall, July 20, 2020, appeared to have the lowest number of total tweets 
+#categorized across all sentiment categories.
+```
