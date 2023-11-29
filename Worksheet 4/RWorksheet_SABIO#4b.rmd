@@ -9,7 +9,6 @@ date: "2023-11-08"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
 ```
 1. Using the for loop, create an R script that will display a 5x5 matrix as shown in
 Figure 1. It must contain vectorA = [1,2,3,4,5] and a 5 x 5 zero matrix.
@@ -184,7 +183,6 @@ f. Interpret the result.
 install.packages("readxl")
 library(readxl)
 alexaFile <- read_excel("alexa_file.xlsx")
-View(alexaFile)
 
 alexaVar <- gsub("Black Plus", "Black Plus", alexaFile$variation)
 alexaFile$variation <- gsub("Black Show", "Black Show", alexaFile$variation)
@@ -195,7 +193,6 @@ alexaFile$variation <- gsub("White Plus", "White Plus", alexaFile$variation)
 alexaFile$variation <- gsub("White Show", "White Show", alexaFile$variation)
 alexaFile$variation <- gsub("White Spot", "White Spot", alexaFile$variation)
 
-knitr::include_graphics("alexa_file.xlsx")
 ```
 7b.Get the total number of each variations and save it into another object. Save the object as variations.RData. Write the R scripts. What is its result?
 ```{r 7b}
