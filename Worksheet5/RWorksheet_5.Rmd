@@ -35,7 +35,7 @@ factor_exerciselevels<- factor(exerciseLevels)
 levels(factor_exerciselevels) <- c("none","light","intense")
 factor_exerciselevels
 ```
-4a.a. Apply the factor function and factor level. Describe the results.
+4a. Apply the factor function and factor level. Describe the results.
 ```{r 4}
 state <- c("tas", "sa", "qld", "nsw", "nsw", "nt", "wa", "wa", "qld",
 "vic", "nsw", "vic", "qld", "qld", "sa", "tas", "sa", "nt",
@@ -90,7 +90,16 @@ total_stdError
 7. Use the titanic dataset.
 a. subset the titatic dataset of those who survived and not survived. Show the codes and its result.
 ```{r 7}
+library(titanic)
 
+data("titanic_train")
+titanicData <- titanic_train
+
+people_survived <- subset(titanicData, Survived == 1)
+people_not_survived <- subset(titanicData, Survived == 0)
+
+head(people_survived)
+head(people_not_survived)
 ```
 8. The data sets are about the breast cancer Wisconsin. The samples arrive periodically as Dr. Wolberg reports his clinical cases.
 
@@ -143,6 +152,12 @@ attributes(breastCancer_Data)
 ```
 8e. Find the percentage of respondents who are malignant. Interpret the results.
 ```{r 8e}
+malignantNum <- sum(breastCancer_Data$malignant == 1)
+
+total_respondents <- nrow(breastCancer_Data)
+
+malignant_prcnt <- (malignantNum / total_respondents) * 100
+cat("Percentage of respondents who are malignant:", malignant_prcnt, "%\n")
 
 ```
 9.Export the data abalone to the Microsoft excel file. Copy the codes.

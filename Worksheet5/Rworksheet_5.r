@@ -44,7 +44,7 @@ incomes <- c(60, 49, 40, 61, 64, 60, 59, 54,
 data <- data.frame(State = factor_state, Income = incomes)
 print(data)
 
-#a. Calculate the sample mean income for each state we can now use the special function tapply()
+#a. Calculate the sample mean income for each state we can now use the special function tapply():
 mean_income <- tapply(incomes, factor_state, mean)
 print(mean_income)
 
@@ -55,7 +55,9 @@ print(mean_income)
 #56.00000 52.25000 
 
 #Interpretation:
-  #6.Calculate the standard errors of the state income means (refer again to number 3)
+ # These values represent the average income for tax accountants from all the states and territories of Australia.
+
+#6.Calculate the standard errors of the state income means (refer again to number 3)
 
 stdError <- function(x) sqrt(var(x) / length(x))
 errors_means <- tapply(incomes, factor_state, stdError)
@@ -65,24 +67,20 @@ print(errors_means)
 #6.a. What is the standard error? Write the codes.
 #b. Interpret the result.
 
-I#nterpretation:
-  #The overall standard error serves as an indicator of how precise the sample mean estimate is for the entire group of tax accountants.
-
+#Interpretation:
+ # The overall standard error serves as an indicator of how precise the sample mean estimate is for the entire group of tax accountants.
 
 total_stdError <- stdError(incomes)
 total_stdError
 
 #7. Use the titanic dataset.
-#a. subset the titatic dataset of those who survived and not survived. Show the codes and its result.
-
-
 #8. The data sets are about the breast cancer Wisconsin. The samples arrive periodically as Dr. Wolberg reports his clinical cases.
 
 #a. describe what is the dataset all about.
 #< The Breast Cancer Wisconsin dataset consists of various quantitative and qualitative features extracted from biopsy samples, each associated with a unique ID number. These features are clump thickness, size uniformity,shape uniformity,marginal adhesion,epithelial size,bare nucleoli,bland chromatin,normal nucleoli,mitoses,class.
 
 #d. Compute the descriptive statistics using different packages. Find the values of:
-#d.1 Standard error of the mean for clump thickness.
+ # d.1 Standard error of the mean for clump thickness.
 #d.2 Coefficient of variability for Marginal Adhesion.
 #d.3 Number of null values of Bare Nuclei.
 #d.4 Mean and standard deviation for Bland Chromatin
@@ -119,20 +117,22 @@ confidenceInterval_uniformityCellShape <- t.test(breastCancer_Data$shape_uniform
 
 confidenceInterval_uniformityCellShape
 
-
 #8d. How many attributes?
-  
 attributes(breastCancer_Data)
 
 #8e. Find the percentage of respondents who are malignant. Interpret the results.
+malignantNum <- sum(breastCancer_Data$malignant == 1)
+
+total_respondents <- nrow(breastCancer_Data)
+
+malignant_prcnt <- (malignantNum / total_respondents) * 100
+cat("Percentage of respondents who are malignant:", malignant_prcnt, "%\n")
 
 #9.Export the data abalone to the Microsoft excel file. Copy the codes.
-
 library(xlsx)
 abalone<- read.csv("abalone.csv")
 xlsx::write.xlsx(abalone, "abalone.xls", col.names=TRUE, row.names=TRUE, sheetName="sample")
 
 library("AppliedPredictiveModeling")
-View(abalone)
 head(abalone)
 summary(abalone)
